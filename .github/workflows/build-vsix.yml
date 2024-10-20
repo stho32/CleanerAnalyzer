@@ -25,10 +25,10 @@ jobs:
       shell: bash
 
     - name: Restore NuGet packages
-      run: nuget restore CleanerAnalyzer\CleanerAnalyzer\CleanerAnalyzer.sln
+      run: nuget restore CleanerAnalyzer\CleanerAnalyzer.sln
 
     - name: Build VSIX
-      run: msbuild CleanerAnalyzer\CleanerAnalyzer\CleanerAnalyzer.sln /p:Configuration=Release /p:DeployExtension=false /p:ZipPackageCompressionLevel=normal /v:m
+      run: msbuild CleanerAnalyzer\CleanerAnalyzer.sln /p:Configuration=Release /p:DeployExtension=false /p:ZipPackageCompressionLevel=normal /v:m
 
     - name: Create Release
       id: create_release
@@ -47,6 +47,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: .\CleanerAnalyzer\CleanerAnalyzer\CleanerAnalyzer\bin\Release\CleanerAnalyzer.vsix
+        asset_path: .CleanerAnalyzer\CleanerAnalyzer\bin\Release\CleanerAnalyzer.vsix
         asset_name: CleanerAnalyzer-${{ steps.date.outputs.date }}.vsix
         asset_content_type: application/octet-stream
