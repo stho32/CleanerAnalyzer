@@ -40,6 +40,13 @@ namespace CleanerAnalyzer
         private void AnalyzeMethod(SyntaxNodeAnalysisContext context)
         {
             var methodDeclaration = (MethodDeclarationSyntax)context.Node;
+            
+            // Check if the method should be included in the complexity analysis
+            if (!ShouldAnalyzeMethod(methodDeclaration.Identifier.Text))
+            {
+                return;
+            }
+
             int complexity = CalculateCyclomaticComplexity(methodDeclaration);
 
             if (complexity > ComplexityThreshold)
@@ -48,6 +55,19 @@ namespace CleanerAnalyzer
                     methodDeclaration.Identifier.Text, complexity, ComplexityThreshold);
                 context.ReportDiagnostic(diagnostic);
             }
+        }
+
+        private bool ShouldAnalyzeMethod(string methodName)
+        {
+            // Exclude methods starting with "Pruefe" and ending with "MitRegeln"
+            if (methodName.StartsWith("Pruefe") && methodName.EndsWith("MitRegeln"))
+            {
+                return false;
+            }
+
+            // Add any other exclusion rules here if needed
+
+            return true;
         }
 
         private int CalculateCyclomaticComplexity(MethodDeclarationSyntax method)
