@@ -4,5 +4,6 @@
 
 Rule ID | Category | Severity | Notes
 --------|----------|----------|-------
-CyclomaticComplexity | Maintainability | Warning | Method has high cyclomatic complexity
+CyclomaticComplexity | Maintainability | Warning | ComplexityAnalyzer
+RepositoryDateOnlyUsage | Design | Warning | RepositoryDateOnlyAnalyzer
 

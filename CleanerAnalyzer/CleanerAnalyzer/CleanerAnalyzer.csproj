@@ -54,6 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ComplexityAnalyzer.cs" />
+    <Compile Include="RepositoryDateOnlyAnalyzer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CleanerAnalyzerPackage.cs" />
   </ItemGroup>
