@@ -7,6 +7,12 @@ using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace CleanerAnalyzer
 {
+    /// <summary>
+    /// Analyzes repository classes for usage of DateOnly type.
+    /// </summary>
+    /// <remarks>
+    /// This analyzer checks if repository classes use DateOnly type, which can cause SQL Server compatibility issues.
+    /// </remarks>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class RepositoryDateOnlyAnalyzer : DiagnosticAnalyzer
     {

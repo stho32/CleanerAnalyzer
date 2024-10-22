@@ -7,6 +7,13 @@ using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace CleanerAnalyzer
 {
+    /// <summary>
+    /// Analyzes methods for cyclomatic complexity.
+    /// </summary>
+    /// <remarks>
+    /// This analyzer checks if methods exceed a certain threshold of cyclomatic complexity.
+    /// High complexity can indicate that a method is difficult to understand and maintain.
+    /// </remarks>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class ComplexityAnalyzer : DiagnosticAnalyzer
     {
